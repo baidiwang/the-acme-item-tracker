@@ -1,5 +1,3 @@
-
-
 //action object usually have a type and payload
 //two ways we interact with redux: dispatch and subscribe
 // redux takes some medthods
@@ -10,7 +8,8 @@ import { createStore } from 'redux';
 const initialState = {
   view: window.location.hash.slice(1),
   users: [],
-  things: []
+  things: [],
+  highestRankingThings: []
 };
 
 const store = createStore((state = initialState, action)=> { 
