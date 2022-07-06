@@ -12,7 +12,6 @@ const max = () => {
 
      if (result < input[i]) {
     result = input[i];
-    // console.log(result);
 }
 //   } else {
 //     result = input[i];
@@ -23,5 +22,5 @@ const max = () => {
 }
 
 
-const test =  max();
-console.log(test);
+// const test =  max();
+// console.log(test);

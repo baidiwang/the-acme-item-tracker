@@ -10,6 +10,14 @@ const ThingForm = ({ createThing })=> {
   );
 };
 
+const ThingFormDelete = ({ deleteThing })=> {
+  return (
+    <div>
+      <button onClick={ deleteThing }>X</button>
+    </div>
+  );
+};
+
 const mapDispatchToProps = (dispatch)=> {
   return {
     createThing: async()=> {

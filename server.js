@@ -8,7 +8,6 @@ app.use('/dist', express.static('dist'));
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
-
 app.post('/api/things', async(req, res, next)=> {
   try {
     res.status(201).send(await Thing.create(req.body));
@@ -17,6 +16,7 @@ app.post('/api/things', async(req, res, next)=> {
     next(ex);
   }
 });
+
 app.get('/api/things', async(req, res, next)=> {
   try {
     res.send(await Thing.findAll());
@@ -26,6 +26,21 @@ app.get('/api/things', async(req, res, next)=> {
   }
 });
 
+
+//delete a thing
+app.delete('/api/things/:id', async (req, res, next) => {
+  try{
+    const thing = await Thing.finalByPk(req.params.id);
+    await thing.destroy();
+    res.sendStatus(204);
+    }
+   catch(ex) {
+    next(ex);
+   }
+})
+
+
+
 app.get('/api/users', async(req, res, next)=> {
   try {
     res.send(await User.findAll());
@@ -34,6 +49,19 @@ app.get('/api/users', async(req, res, next)=> {
     next(ex);
   }
 });
+
+//delete a uder  
+app.delete('/api/users/:id', async (req, res, next) => {
+  try{
+    const user = await User.finalByPk(req.params.id);
+    await user.destroy();
+    res.sendStatus(204);
+    }
+   catch(ex) {
+    next(ex);
+   }
+})
+
 
 
 const port = process.env.PORT || 3000;
